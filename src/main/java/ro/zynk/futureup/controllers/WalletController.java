@@ -74,4 +74,12 @@ public class WalletController {
         }
 
     }
+    @GetMapping(value = "total_value_of_all_coins_from_wallet/{walletID}")
+    public ResponseEntity<BaseResponse> totalValueOfAllCoinsFromWallet(@PathVariable("walletID") Long walletId){
+        try {
+            return new ResponseEntity<>(walletService.totalValueOfCoinsFromWallet(walletId), HttpStatus.OK);
+        } catch (NotFoundException e) {
+            return new ResponseEntity<>(new ErrorResponse(e.getMessage()), HttpStatus.BAD_REQUEST);
+        }
+    }
 }

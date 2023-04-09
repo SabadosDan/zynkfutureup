@@ -180,6 +180,26 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Total value of coins from a wallet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/wallets/get_all_owned_coins/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wallets",
+						"total_value_of_all_coins_from_wallet",
+						"2"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

@@ -5,6 +5,8 @@ import ro.zynk.futureup.controllers.responses.CoinResponse;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "coins")
