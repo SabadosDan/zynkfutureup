@@ -15,7 +15,7 @@ public class Transaction extends BaseEntity {
 //    @JoinColumn(name = "coin_id")
 //    private Coin coin;
     @Column(name = "coin_id_name_value")
-    private String coin;git
+    private String coin;
 
     @Column(name = "amount")
     private Double amount;
