@@ -17,6 +17,7 @@ import ro.zynk.futureup.exceptions.NotEnoughFundsException;
 import ro.zynk.futureup.exceptions.NotFoundException;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -75,10 +76,19 @@ public class WalletService {
 
         Coin coin = coinOpt.get();
         Wallet wallet = walletOpt.get();
-
+        // calculating the total value
         Double totalValue = coin.getValue() * buyCoinRequest.getAmount();
-        LocalDateTime date = LocalDateTime.now();
-        Transaction transaction(date, coin, buyCoinRequest.getAmount(), totalValue);
+        // creating the date
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String formattedDate = myDateObj.format(myFormatObj);
+
+        Double amount = Double.valueOf(buyCoinRequest.getAmount());
+
+        //putting details of coin in a string
+        String coinToString = String.format("(%d, %s, %.2f)", coin.getId(), coin.getName(), coin.getValue());
+
+        Transaction transaction = new Transaction(formattedDate, coinToString, amount, totalValue);
         transactionRepository.save(transaction);
 
         // find existing coin amount to update

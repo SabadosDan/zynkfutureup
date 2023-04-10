@@ -1,44 +1,48 @@
 package ro.zynk.futureup.domain.dtos;
 
+import ro.zynk.futureup.controllers.responses.CoinResponse;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "transactions")
 public class Transaction extends BaseEntity {
-    @Column
-    private LocalDateTime date;
+    @Column(name = "date")
+    private String date;
 
-    @ManyToOne
-    @JoinColumn(name = "coin(id, name, value")
-    private Coin coin;
+//    @ManyToOne
+//    @JoinColumn(name = "coin_id")
+//    private Coin coin;
+    @Column(name = "coin_id_name_value")
+    private String coin;git
 
-    @Column
+    @Column(name = "amount")
     private Double amount;
 
-    @Column
+    @Column(name = "total_value")
     private Double totalValue;
 
-    public Transaction(LocalDateTime date, Coin coin, Double amount, Double totalValue) {
+    public Transaction(String date, String coin, Double amount, Double totalValue) {
         this.date = date;
         this.coin = coin;
         this.amount = amount;
         this.totalValue = totalValue;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Coin getCoin() {
+    public String getCoin() {
         return coin;
     }
 
-    public void setCoin(Coin coin) {
+    public void setCoin(String coin) {
         this.coin = coin;
     }
 

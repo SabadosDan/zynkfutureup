@@ -47,4 +47,12 @@ public class Coin extends BaseEntity {
     public void setValue(Double value) {
         this.value = value;
     }
+
+    public CoinResponse toCoinResponse() {
+        CoinResponse coinResponse = new CoinResponse();
+        coinResponse.setId(this.getId());
+        coinResponse.setName(name);
+        coinResponse.setValue(value);
+        return coinResponse;
+    }
 }

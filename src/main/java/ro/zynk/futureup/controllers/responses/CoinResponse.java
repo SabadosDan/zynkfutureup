@@ -39,4 +39,12 @@ public class CoinResponse extends BaseResponse {
     public void setValue(Double value) {
         this.value = value;
     }
+
+    public Coin toCoin() {
+        Coin coin = new Coin();
+        coin.setId(id);
+        coin.setName(name);
+        coin.setValue(value);
+        return coin;
+    }
 }
